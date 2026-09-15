@@ -24488,14 +24488,14 @@ class AnnotationElement {
         id: editId
       }
     } = this;
-    this.container.addEventListener("dblclick", () => {
+    /*this.container.addEventListener("dblclick", () => {
       this.linkService.eventBus?.dispatch("switchannotationeditormode", {
         source: this,
         mode,
         editId,
         mustEnterInEditMode: true
       });
-    });
+    });*/
   }
   updateOC(optionalContentConfig) {
     if (!this.data.oc || !optionalContentConfig) {
@@ -26070,6 +26070,7 @@ class PopupElement {
     });
   }
   render() {
+    return;
     if (this.#popup) {
       return;
     }
@@ -27030,6 +27031,11 @@ class AnnotationLayer {
     this._annotationEditorUIManager = annotationEditorUIManager;
     this._commentManager = commentManager || null;
   }
+  // edutiek-patch: begin
+  edutiekElements(){
+    return this.#elements;
+  }
+  // edutiek-patch: end
   hasEditableAnnotations() {
     return this.#editableAnnotations.size > 0;
   }
